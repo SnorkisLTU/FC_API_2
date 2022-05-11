@@ -1,0 +1,23 @@
+version: '3'
+services:
+  mongo:
+    image: 'mongo:3.6.0'
+    ports:
+      - "27017:27017"
+    networks:
+      - local
+  fc_api:
+    build: ./FootballClubs
+    networks:
+      - local
+    ports:
+      - "80:80"
+    container_name: clubs
+  contacts:
+    build: ./contacts
+    networks:
+      - local
+    ports:
+      - "5000:5000"
+networks:
+  local:
